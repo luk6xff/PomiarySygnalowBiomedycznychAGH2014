@@ -1,0 +1,25 @@
+function [hrls, h_n, e_n] = rls_lab(x,d,hrls,delt);
+
+ %Filtr adaptacyjny RLS
+ %x - sygna³ wejœciowy
+ %d - sygna³ odniesienia
+ %hrls - wspó³czynniki filtra
+ %delt - ma³a wartoœæ dodatnia, np.0.01
+ %h_n - kolejne wektory wspó³czynników filtra
+ %e_n - kolejne wartoœci b³êdu
+ 
+hrls=hrls(:);
+M=length(hrls);
+P=1/delt*eye(M,M);
+q=zeros(M,1);
+h_n=hrls;
+e_n=[];
+for k=1:min([length(x),length(d)])
+    q=[q(2:M); x(k)];
+    kg=(P*q)/(1+q'*P*q);
+    e=d(k)-q'*hrls;
+    e_n=[e_n e];
+    hrls=hrls+kg*e;
+    h_n=[h_n hrls];
+    P=P-kg*q'*P;
+end

@@ -1,0 +1,38 @@
+close all, clear all, clc
+
+Nx=256;
+f1=50; A1=1; fi1=pi/7;
+f2=150;A2=2; fi2=0;
+Fs=1000;
+t=(0:Nx-1)/Fs;
+x1=A1*sin(2*pi*f1*t+fi1);
+x2=A2*sin(2*pi*f2*t+fi2);
+x=x1+x2; %sygna³ testowy
+
+h=fir1(21,100/(Fs/2));
+Nh=length(h);
+y1=conv(h,x);
+
+
+L=32;
+L=max([L,Nh]);
+nL=ceil(Nx/L);
+x =[x zeros(1,nL*L-length(x))];
+Ny=Nh+L-1;
+hz=zeros(1,Ny);
+hz(1:Nh)=h;
+Hw=fft(hz);
+y=zeros(1,Nh+length(x)-1);
+
+for k=1:nL
+%xz=zeros(1,Ny);
+%ind=1+(k-1)*L;
+%xz(1:L)=x(ind:ind+L-1);
+%Xw=fft(xz);
+%ys=ifft(Xw.*Hw);
+%ind=1+(k-1)*L;
+%y(ind:ind+Ny-1)=y(ind:ind+Ny-1)+ys;
+xz(1:L+Nh)=x(ind:max(ind+L+Nh-1,length(x)));
+Xw=fft(xz);
+end
+

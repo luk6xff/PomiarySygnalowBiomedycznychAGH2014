@@ -1,0 +1,32 @@
+clear all
+close all
+clc 
+
+fpr=4000;
+fpass=800; 
+fstop=1200; 
+rp=1;
+rs=30;
+
+wpass=fpass/2000;
+wstop=fstop/2000;
+
+
+
+[N,Wn]=buttord(wpass,wstop,rp,rs)
+[B A]=butter(N,Wn);
+[H,w]=freqz(B,A,512);
+
+[N1,Wn1]=cheb1ord(wpass, wstop, rp, rs)
+[B1,A1]=cheby1(N1,rp,Wn1);
+[H1,w]=freqz(B1,A1,w);
+
+[N2,Wn2]=cheb2ord(wpass,wstop,rp,rs)
+[B2,A2]=cheby2(N2,rs,Wn2);
+[H2,w]=freqz(B2,A2,w);
+
+[N3,Wn3]=ellipord(wpass, wstop, rp, rs)
+[B3,A3]=ellip(N3,rp,rs,Wn3);
+[H3,w]=freqz(B3,A3,w);
+
+

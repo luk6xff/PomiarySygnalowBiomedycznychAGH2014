@@ -1,0 +1,3 @@
+function y=lwt_step(x,P)
+xe=x(1:2:end);
+xo=x(2:2:end);

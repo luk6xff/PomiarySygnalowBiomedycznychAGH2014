@@ -1,0 +1,6 @@
+clear all
+clc
+
+I=checkerboard(60,4,4);
+z=rand(size(I));
+x=I+z

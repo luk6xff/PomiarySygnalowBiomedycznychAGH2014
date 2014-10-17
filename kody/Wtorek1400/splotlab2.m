@@ -1,0 +1,1 @@
+function y2=splotlab2(x,h);

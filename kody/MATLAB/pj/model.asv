@@ -1,0 +1,3 @@
+function J=model.(A)
+global x1 Y Ym J
+Ym=(A(1)*x1^3)+(A(2)*x1^2)+(A(3)*x1

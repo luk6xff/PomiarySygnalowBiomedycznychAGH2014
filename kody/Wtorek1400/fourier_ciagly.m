@@ -1,0 +1,1 @@
+function [Xw, w]=fourier_ciagly(x,dw,wz);

@@ -1,0 +1,36 @@
+clear all
+clc
+
+f_pass = 1000; %Hz 
+f_stop = 1500; %Hz
+r_p = 1; %dB;
+r_s = 30; %dB
+f_s=4000;
+
+Wp=2*f_pass/f_s;
+Ws=2*f_stop/f_s;
+
+Wpx=Wp
+
+[n,Wn]=buttord(Wp,Ws,r_p,r_s);
+
+[B,A]=butter(n,Wn);
+
+f=0:10:2000;
+w=2*pi*f;
+hold on;
+[H,w]=freqz(B,A,);
+plot(w/(2*pi),20*log10(abs(H)),'.-')
+grid on;
+
+[n,Wp]=CHEB1ORD(Wp,Ws, r_p, r_s,);
+[B,A]=CHEBY1(n,0.1,Wp,'s');
+[H,w]=freqz(B,A,w);
+plot(w/(2*pi),20*log10(abs(H)),'r');
+grid on;
+
+
+
+
+
+legend('Butterworth','Czebyszewa 1')

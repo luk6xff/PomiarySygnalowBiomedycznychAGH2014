@@ -1,0 +1,16 @@
+close all;
+clear all;
+clc
+
+A=2;
+w=pi/4
+fi=pi/11
+Nx=32
+
+n=0:Nx-1;
+x=A*exp(j*w*n);
+z=
+figure
+plot(n,x,'.-')
+
+axis tight

@@ -1,0 +1,22 @@
+function [Xw, w]=fourier_ciagly(x,dw,wz);
+dw=0.01
+wz=[-pi pi];
+w=wz(1):dw:wz(2);
+x=[1 3 4 5 6];
+n=randn(1,100);
+ for w=w(n):0.001
+    for n=1: Inf
+        xw=xw+x(n)*exp(-j*w*n)
+    end
+ end
+
+    
+ %ci¹g³a transformacja Fouriera sygna³ów dyskretnych
+ %dw - krok czêstotliwoœci [rad]
+ %wz=[w1 w2]- zakres czêstotliwoœci [rad]
+ %x - sygna³
+ %Xw - widmo sygna³u x
+ %w - pulsacje, dla których wyznaczono widmo Xw
+ %
+ %przyk³adowe wywo³anie
+ [Xw, w]=fourier_ciagly(x,dw,wz);

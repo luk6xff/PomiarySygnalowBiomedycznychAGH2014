@@ -1,0 +1,10 @@
+clc;
+clear all;
+close all;
+w=wz(1):dw:wz(2);
+dw=0.01;
+wz=[-pi pi];
+x=[1 4 5];
+Xw=;
+
+[Xw,w]=fourier_ciagly(x, dw, wz);

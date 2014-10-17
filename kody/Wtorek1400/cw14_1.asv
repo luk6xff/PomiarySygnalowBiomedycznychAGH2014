@@ -1,0 +1,12 @@
+close all; clear all; clc
+
+I =imread('cameraman.tif');
+double I;
+I=I./256;
+
+h=fft(I);
+h1=fftshit(h);
+surf(abs(hi));
+N=leight(I);
+ulala=zeros(N,N);
+I2=(I,ulala,ulala);

@@ -1,0 +1,29 @@
+clc;
+clear all;
+close all;
+
+h=fir1(10,0.5);
+x=rand(1,100)
+d=conv(x,h);
+d=d+0.1*randn(size(d));
+mi=0.01;
+hrls=1;
+hlms=1;
+delt=0.01;
+hrls=zeros(1,1)
+hlms=zeros(1,1)
+
+[hrls,h_n,e_n]=rls_lab(x,d,hrls,delt);
+figure(1)
+plot((e_n),'.-r')
+figure(2)
+plot((h_n),'o-g')
+figure(3)
+stem((h),'.-r')
+hold on
+stem((hrls),'o-g')
+[hrls,h_nn,e_nn]=rls_lab(x,d,hrls,delt);
+figure(3)
+plot((e_nn),'.-r')
+figure(4)
+plot((h_nn),'o-g')

@@ -1,0 +1,16 @@
+T=1;
+w0=2*pi/T;
+t=linspace(0,T,200);
+tau=0.25*T;
+x=1/T;
+%n=-100;
+
+
+for n=-100:1:100
+
+  i=2*sin(n*tau*w0/2)/(n*w0*T);
+  e=exp((i*2*pi*n/T).*t);
+  ie=i*e
+  suma=suma+i;
+end
+disp(suma);

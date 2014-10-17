@@ -1,0 +1,14 @@
+clear all
+close all
+clc
+
+A=
+To=1;
+dpr=1000;
+tp=0:(1/dpr):To;
+t=10*tp;
+of=1.5;
+
+
+x=exp(-t/2*To).*sin(pi*t)+of;
+plot(x)

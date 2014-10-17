@@ -1,0 +1,25 @@
+clear all
+close all
+clc 
+
+fpass=800;
+fstop=1200;
+rp=1;
+rs=30;
+Fs=4000;
+
+wpass=2*pi*fpass;
+wstop=2*pi*fstop;
+
+[N,Wn] = BUTTER(N,Wn,'low')
+[N,Wn] = CHEBY1(N,R,Wp,'low')
+
+N=(0.5*log((10^(rp/10)-1)/((10^(rs/10))-1)))/(log(wpass/wstop))
+
+wc= wpass/(((10^(rp/10))-1)^(1/2*N))
+
+Sk=wc*exp(j)
+
+[N,Wn]=buttord(wpass,wstop,rp,rs,'s')
+
+

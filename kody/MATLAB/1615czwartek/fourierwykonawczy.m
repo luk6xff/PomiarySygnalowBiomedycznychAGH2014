@@ -1,0 +1,16 @@
+close all
+clear all 
+clc 
+%% parametry
+Nx=64; %d³ugoœæ sygna³u x (liczba próbek)
+w=pi/10; %czêstotliwoœæ sygna³u [rad]
+A=2; %amplituda sygna³u
+fi=pi/11; %faza sygna³u
+%% obliczenia
+n=0:Nx-1; %wektor argumentów funkcji sin
+x=A*sin(w*n+fi); %wektor sygna³u
+%% wizualizacja
+figure
+plot(n,x,'.-')
+b=fft(x);
+plot(n,b)

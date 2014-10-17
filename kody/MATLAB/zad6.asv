@@ -1,0 +1,11 @@
+f=10;
+fp=100;
+T=1;
+A=1;
+Tp=1/fp
+N=2/Tp;
+n=0:(N-1)
+
+x=A*exp(-(n/fp)/T).*sin(2*pi*f*n/fp)
+plot(n,x)
+s(t)=A(1-1/T*n/fp)
